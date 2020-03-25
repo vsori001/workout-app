@@ -4,6 +4,7 @@ import './Set.css';
 function Set(props) {
   const [reps, updateReps] = useState(0);
   const [weight, updateWeight] = useState(0);
+  const theID = props.setID;
 
   return (
     <div className="Set">
@@ -21,6 +22,7 @@ function Set(props) {
         value={weight}
         className="form-control"
       />
+      <span onClick={props.deleteSet}>&times;</span>
     </div>
   );
 }

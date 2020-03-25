@@ -4,32 +4,32 @@ import { render } from '@testing-library/react';
 import './Exercise.css';
 
 class Exercise extends React.Component {
-  // const [name, setName] = useState('');
-  // const [exerciseSets, makeNewSet] = useState([<Set />]);
-
   state = {
     exercise: this.props.name,
     exerciseId: this.props.id,
-    exerciseSets: [],
-    sessionExercises: []
+    setCount: 0,
+    exerciseSets: []
+  };
+
+  handleDeleteSet = id => {
+    if (this.state.exerciseSets.length == 1) {
+      this.setState({ exerciseSets: [] });
+    } else {
+      let array = [...this.state.exerciseSets];
+      let findId = this.state.exerciseSets.find(obj => obj.id === id);
+      const index = array.indexOf(findId);
+      array.splice(index, 1);
+
+      this.setState({ exerciseSets: array });
+    }
   };
 
   makeNewSet = () => {
-    this.setState({
-      exerciseSets: [...this.state.exerciseSets, <Set />]
-    });
-  };
+    const newSet = { key: this.state.setCount, id: this.state.setCount };
 
-  removeSet = () => {
     this.setState({
-      exerciseSets: [...this.state.exerciseSets, <Set />]
-    });
-  };
-
-  pickExercise = e => {
-    this.setState({
-      exercise: e.target.value,
-      sessionExercises: [...this.state.sessionExercises, e.target.value]
+      setCount: ++this.state.setCount,
+      exerciseSets: [...this.state.exerciseSets, newSet]
     });
   };
 
@@ -38,7 +38,16 @@ class Exercise extends React.Component {
       <div className="Exercise col-sm-3" id={this.props.id}>
         <h4>{this.props.name}</h4>
 
-        <div>{this.state.exerciseSets}</div>
+        <div>
+          {this.state.exerciseSets.length >= 0 &&
+            this.state.exerciseSets.map(s => (
+              <Set
+                key={s.key}
+                setId={s.id}
+                deleteSet={() => this.handleDeleteSet(s.id)}
+              />
+            ))}
+        </div>
 
         <button onClick={this.makeNewSet} className="btn btn-info">
           Add A Set

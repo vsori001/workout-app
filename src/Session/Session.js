@@ -4,34 +4,29 @@ import './Session.css';
 
 class Session extends React.Component {
   state = {
-    exercise: '',
-    id: '',
     sessionExercises: []
   };
 
-  saveSession = () => {
-    const data = { date: 'Thursday' };
-  };
-
+  // Need to fix when a user has 2 of the same exercises
   pickExercise = e => {
     let id = this.props.exercises.find(id => id.name === e.target.value);
     let newExercise = {
       id: id.id,
-      name: e.target.value,
-      sets: [{ reps: 0, weight: 0 }]
+      name: e.target.value
     };
     this.setState({
       sessionExercises: [...this.state.sessionExercises, newExercise]
     });
   };
 
+  // Need to fix when a user has 2 of the same exercises
   handleDelete = e => {
     if (this.state.sessionExercises.length == 1) {
       this.setState({ sessionExercises: [] });
     } else {
-      var array = [...this.state.sessionExercises];
+      let array = [...this.state.sessionExercises];
       let findId = this.state.sessionExercises.find(obj => obj.id === e);
-      var index = array.indexOf(findId);
+      const index = array.indexOf(findId);
       array.splice(index, 1);
 
       this.setState({ sessionExercises: array });
@@ -60,7 +55,6 @@ class Session extends React.Component {
                 name={e.name}
                 key={e.id}
                 id={e.id}
-                sets={e.sets}
                 onDelete={() => this.handleDelete(e.id)}
               />
             ))}

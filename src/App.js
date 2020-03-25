@@ -5,7 +5,15 @@ import Session from './Session/Session';
 // API calls
 const apiExerciseList =
   'https://wger.de/api/v2/exercise/?format=json&language=2&limit=685&status=2';
-const daysofWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+const daysofWeek = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday'
+];
 const months = [
   'January',
   'February',
