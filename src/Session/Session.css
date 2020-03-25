@@ -1,0 +1,9 @@
+.Session select {
+  display: block;
+  margin: 0 auto;
+}
+
+.Session .date {
+  display: block;
+  width: 100%;
+}

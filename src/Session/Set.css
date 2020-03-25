@@ -1,0 +1,14 @@
+.Set input {
+  display: inline;
+  max-width: 80px;
+  margin: 5px;
+  background-color: transparent;
+  color: #ffffff;
+  border: 0 solid transparent;
+}
+
+.Set input[type='number']::-webkit-inner-spin-button,
+.Set input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
