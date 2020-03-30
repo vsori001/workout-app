@@ -55,7 +55,7 @@ function App() {
         updateList(list);
       })
       .catch(console.log);
-  }, exerciseList);
+  }, []);
 
   return (
     <div className="App container">

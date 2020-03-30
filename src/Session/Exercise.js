@@ -5,6 +5,7 @@ import './Exercise.css';
 function Exercise(props) {
   const [setCount, updateCount] = useState(0);
   const [exerciseSets, setExerciseSets] = useState([]);
+  const [uniqueKey, setKey] = useState(props.id);
 
   const handleDeleteSet = id => {
     if (exerciseSets.length === 1) {
@@ -20,7 +21,9 @@ function Exercise(props) {
   };
 
   const makeNewSet = () => {
-    const newSet = { key: setCount, id: setCount };
+    let newKey = uniqueKey;
+    setKey(++newKey);
+    const newSet = { key: uniqueKey, id: setCount };
     let count = setCount;
     updateCount(count++);
     setExerciseSets([...exerciseSets, newSet]);

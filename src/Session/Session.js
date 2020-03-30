@@ -5,17 +5,21 @@ import './Session.css';
 function Session(props) {
   const [sessionExercises, setSessionExercises] = useState([]);
 
-  // Need to fix when a user has 2 of the same exercises
   const pickExercise = e => {
     let id = props.exercises.find(exercise => exercise.name === e.target.value);
-    let newExercise = {
-      id: id.id,
-      name: e.target.value
-    };
-    setSessionExercises([...sessionExercises, newExercise]);
+
+    // Makes sure the exercise is not already logged
+    if (!sessionExercises.find(check => check.id === id.id)) {
+      let newExercise = {
+        id: id.id,
+        name: e.target.value
+      };
+      setSessionExercises([...sessionExercises, newExercise]);
+    } else {
+      alert(`You already have ${e.target.value} logged`);
+    }
   };
 
-  // Need to fix when a user has 2 of the same exercises
   const handleDelete = e => {
     if (sessionExercises.length === 1) {
       setSessionExercises([]);
