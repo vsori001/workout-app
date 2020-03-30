@@ -4,7 +4,6 @@ import './Set.css';
 function Set(props) {
   const [reps, updateReps] = useState(0);
   const [weight, updateWeight] = useState(0);
-  const theID = props.setID;
 
   return (
     <div className="Set">
