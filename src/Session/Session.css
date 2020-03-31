@@ -1,9 +1,21 @@
 .Session select {
   display: block;
-  margin: 0 auto;
 }
 
 .Session .date {
   display: block;
   width: 100%;
+}
+
+.Session .btn-outline-success {
+  margin: 0 10px;
+  border-color: #40937f;
+}
+
+.Session .btn-outline-success:hover {
+  background-color: #40937f;
+}
+
+.Session svg {
+  margin-right: 10px;
 }
